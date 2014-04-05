@@ -1,20 +1,20 @@
-mongoid-frequency
+mongoid_frequency
 =================
 
-`mongoid-frequency` adds syntactic sugar for generating frequency maps using the mongodb aggregation framework.
+`mongoid_frequency` adds syntactic sugar for generating frequency maps using the mongodb aggregation framework.
 
 # Installation
 
 Install directly from rubygems:
 
 ```ruby
-gem install mongoid-frequency
+gem install mongoid_frequency
 ```
 
 Or if you are using a Gemfile, place this in your Gemfile:
 
 ```ruby
-gem 'mongoid-frequency'
+gem 'mongoid_frequency'
 ```
 
 # Demo
