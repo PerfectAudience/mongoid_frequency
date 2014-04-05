@@ -22,14 +22,14 @@ gem 'mongoid_frequency'
 ```ruby
 > Book.all.frequency :genre
 => {"Adventure" => 12,
-"Sci-fi" => 8",
-"Romance" => 4",
+"Sci-fi" => 8,
+"Romance" => 4,
 "Non-Fiction" => 7}
 
 > Book.collection.freq :genre
 => {"Adventure" => 12,
-"Sci-fi" => 8",
-"Romance" => 4",
+"Sci-fi" => 8,
+"Romance" => 4,
 "Non-Fiction" => 7}
 
 > Book.collection.freq :genre, :published.lt => 40.years.ago
