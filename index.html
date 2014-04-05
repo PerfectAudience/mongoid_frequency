@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Mongoid frequency by PerfectAudience</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/PerfectAudience/mongoid_frequency">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Mongoid frequency</h1>
+            <h2>Syntactic sugar for generating frequency maps using the mongodb aggregation framework</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/PerfectAudience/mongoid_frequency/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/PerfectAudience/mongoid_frequency/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a name="mongoid-frequency" class="anchor" href="#mongoid-frequency"><span class="octicon octicon-link"></span></a>mongoid-frequency</h1>
+
+<p><code>mongoid-frequency</code> adds syntactic sugar for generating frequency maps using the mongodb aggregation framework.</p>
+
+<h1>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<p>Install directly from rubygems:</p>
+
+<div class="highlight highlight-ruby"><pre><span class="n">gem</span> <span class="n">install</span> <span class="n">mongoid</span><span class="o">-</span><span class="n">frequency</span>
+</pre></div>
+
+<p>Or if you are using a Gemfile, place this in your Gemfile:</p>
+
+<div class="highlight highlight-ruby"><pre><span class="n">gem</span> <span class="s1">'mongoid-frequency'</span>
+</pre></div>
+
+<h1>
+<a name="demo" class="anchor" href="#demo"><span class="octicon octicon-link"></span></a>Demo</h1>
+
+<div class="highlight highlight-ruby"><pre><span class="o">&gt;</span> <span class="no">Book</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">frequency</span> <span class="ss">:genre</span>
+<span class="o">=&gt;</span> <span class="p">{</span><span class="s2">"Adventure"</span> <span class="o">=&gt;</span> <span class="mi">12</span><span class="p">,</span>
+<span class="s2">"Sci-fi"</span> <span class="o">=&gt;</span> <span class="mi">8</span><span class="s2">",</span>
+<span class="s2">"</span><span class="no">Romance</span><span class="s2">" =&gt; 4"</span><span class="p">,</span>
+<span class="s2">"Non-Fiction"</span> <span class="o">=&gt;</span> <span class="mi">7</span><span class="p">}</span>
+
+<span class="o">&gt;</span> <span class="no">Book</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">freq</span> <span class="ss">:genre</span>
+<span class="o">=&gt;</span> <span class="p">{</span><span class="s2">"Adventure"</span> <span class="o">=&gt;</span> <span class="mi">12</span><span class="p">,</span>
+<span class="s2">"Sci-fi"</span> <span class="o">=&gt;</span> <span class="mi">8</span><span class="s2">",</span>
+<span class="s2">"</span><span class="no">Romance</span><span class="s2">" =&gt; 4"</span><span class="p">,</span>
+<span class="s2">"Non-Fiction"</span> <span class="o">=&gt;</span> <span class="mi">7</span><span class="p">}</span>
+
+<span class="o">&gt;</span> <span class="no">Book</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">freq</span> <span class="ss">:genre</span><span class="p">,</span> <span class="ss">:published</span><span class="o">.</span><span class="n">lt</span> <span class="o">=&gt;</span> <span class="mi">40</span><span class="o">.</span><span class="n">years</span><span class="o">.</span><span class="n">ago</span>
+<span class="o">=&gt;</span> <span class="p">{</span><span class="s2">"Sci-fi"</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+<span class="s2">"Romance"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">}</span>
+
+<span class="o">&gt;</span> <span class="n">author</span><span class="o">.</span><span class="n">books</span><span class="o">.</span><span class="n">freq</span> <span class="ss">:genre</span>
+<span class="o">=&gt;</span> <span class="p">{</span><span class="s2">"Romance"</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+<span class="s2">"Non-Fiction"</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">}</span>
+</pre></div>
+
+<h1>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h1>
+
+<ol>
+<li>Fork it</li>
+<li>Make your changes</li>
+<li>Write/update tests. Run with <code>rake</code>.</li>
+<li>Issue a Pull Request</li>
+</ol><h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p>MIT. Go nuts.</p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/PerfectAudience">PerfectAudience</a> can be found on <a href="https://github.com/PerfectAudience/mongoid_frequency">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
